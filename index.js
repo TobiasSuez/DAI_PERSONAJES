@@ -1,4 +1,4 @@
-import config from 'C:/Users/46919362/Desktop/DAI-Pesonajes/dbconfig-env.js';
+import config from '../dbconfig-env.js';
 import sql from 'mssql';
 
 console.clear();
