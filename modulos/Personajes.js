@@ -2,7 +2,7 @@ class Personajes{
     id;
     Imagen;
     Nombre;
-    Eded;
+    Edad;
     Peso;
     Historia;
     PeliculasSeriesAsociadas;

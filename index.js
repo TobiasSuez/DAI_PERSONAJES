@@ -3,14 +3,14 @@ import Pelicula from './modulos/Pelicula.js'
 import Personajes from './modulos/Personajes.js'
 
 
-await test_getAll();
+//await test_getAll();
 //await test_getById();
 //await test_insert();
-//await test_update();
+await test_update();
 //await test_deleteById();
 
 async function test_getAll(){
-    let svc = new PersonajeService();
+    let svc = new PersonajesServices();
     let data;
 
     data = await svc.getAll();
@@ -20,44 +20,46 @@ async function test_getAll(){
     //console.log(data[0].id);
     //console.log(data[0].Id);
 }
-/*
+
 async function test_getById(){
-    let svc = new PizzasService();
+    let svc = new PersonajesServices();
     let data;
     data = await svc.getById(2);
     console.log(data);
 }
 
 async function test_insert(){
-    let svc = new PizzasService();
+    let svc = new PersonajesServices();
     let data;
-    let nuevaPizza = new Pizza();
+    let NuevoPersonaje = new Personajes();
     
-    nuevaPizza.nombre       = 'Pizza Guesa';
-    nuevaPizza.libreGluten  = true;
-    nuevaPizza.importe      = 750.50;
-    nuevaPizza.descripcion  = 'Pizza con sabor a hamburguesa';
-    console.log('\nnuevaPizza: ');
-    console.log(nuevaPizza);
+    NuevoPersonaje.Nombre       = 'sapeeeeeee';
+    NuevoPersonaje.Imagen  = "";
+    NuevoPersonaje.Edad      = 750;
+    NuevoPersonaje.Historia  = 'Pizza con sabor a hamburguesa';
+    NuevoPersonaje.Peso      = 6;
+    NuevoPersonaje.PeliculasSeriesAsociadas  = 'CHUCHAAAAAAAAAAAA';
+    console.log('\nNuevoPersonaje: ');
+    console.log(NuevoPersonaje);
 
-    data = await svc.insert(nuevaPizza);
+    data = await svc.insert(NuevoPersonaje);
     console.log(data);
 }
 
 async function test_update(){
-    let svc = new PizzasService();
+    let svc = new PersonajesServices();
     let data;
-    let laPizza;
+    let ElPersonaje;
 
-    laPizza = await svc.getById(12);
-    if (laPizza!= null){
-        laPizza.importe      = 10750.50;
+    ElPersonaje = await svc.getById(9);
+    if (ElPersonaje!= null){
+        ElPersonaje.Edad      = 1075;
 
-        data = await svc.update(laPizza);
+        data = await svc.update(ElPersonaje.Edad=107);
         console.log(data);
     } else {
-        console.log('\laPizza: ');
-        console.log(laPizza);
+        console.log('\ElPersonaje: ');
+        console.log(ElPersonaje);
     }
 }
 
@@ -67,6 +69,6 @@ async function test_deleteById(){
 
     data = await svc.deleteById(12);
     console.log(data);
-}*/
+}
 
 process.exit();
