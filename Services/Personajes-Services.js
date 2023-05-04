@@ -73,7 +73,7 @@ class PersonajesServices {
         }
         return rowsAffected;
     }
-    /*
+    
     deleteById = async (id) => {
         let rowsAffected = 0;
         console.log('Estoy en: PizzaService.deleteById(id)');
@@ -81,14 +81,56 @@ class PersonajesServices {
             let pool   = await sql.connect(config);
             let result = await pool.request()
                 .input('pId', sql.Int, id)
-                .query('DELETE FROM Pizzas WHERE id = @pId');
+                .query('DELETE FROM Personajes WHERE idPersonaje = @pId');
             rowsAffected = result.rowsAffected;
         } catch (error) {
             console.log(error);
         }
         return rowsAffected;
     }
-    */
+    getDetalles = async (id) => {
+        let returnArray = null;
+        console.log('Estoy en: Personaje.Servise.getDetalles()');
+        try {
+            let pool = await sql.connect(config);
+            let result = await pool.request()
+            .input('pId', sql.Int, id)
+            .query("SELECT * FROM Relacion R JOIN Pelicula PE ON R.iDPelicula=PE.idPelicula JOIN Personajes P ON R.iDPersonajes=P.iDPersonaje WHERE R.IDPersonajes=@pId");
+            returnArray = result.recordsets[0];
+        }
+        catch (error) {
+            console.log(error);
+        }
+        return returnArray;
+    }
+    getByPeso = async (Peso) => {
+        let returnEntity = null;
+        console.log('Estoy en: PersonajesService.getByPeso(id)');
+        try {
+            let pool = await sql.connect(config);
+            let result = await pool.request()
+                .input('pPeso', sql.Int, Peso)
+                .query('SELECT * FROM Personajes WHERE Peso = @pPeso');
+            returnEntity = result.recordsets[0][0];
+        } catch (error) {
+            console.log(error);
+        }
+        return returnEntity;
+    }
+    getByNombre = async (Nombre) => {
+        let returnEntity = null;
+        console.log('Estoy en: PersonajesService.getByPeso(id)');
+        try {
+            let pool = await sql.connect(config);
+            let result = await pool.request()
+                .input('pNombre', sql.VarChar, Nombre)
+                .query('SELECT * FROM Personajes WHERE Nombre = @pNombre');
+            returnEntity = result.recordsets[0][0];
+        } catch (error) {
+            console.log(error);
+        }
+        return returnEntity;
+    }
 
 }
 

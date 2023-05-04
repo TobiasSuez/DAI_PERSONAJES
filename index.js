@@ -8,7 +8,9 @@ import Personajes from './modulos/Personajes.js'
 //await test_insert();
 //await test_update();
 //await test_deleteById();
-await Test_Detalles();
+//await Test_Detalles();
+//await Buscar_x_Peso();
+await Buscar_x_Nombre();
 async function test_getAll() {
     let svc = new PersonajesServices();
     let data;
@@ -80,9 +82,26 @@ async function test_deleteById() {
 async function Test_Detalles(){
     let svc= new PersonajesServices();
     let data;
-    data = await svc.getById(3);
+    data = await svc.getDetalles(6);
     console.log(data);
     
 }
+
+async function Buscar_x_Peso(){
+    let svc= new PersonajesServices();
+    let data;
+    data = await svc.getByPeso(250);
+    console.log(data);
+    
+}
+
+async function Buscar_x_Nombre(){
+    let svc= new PersonajesServices();
+    let data;
+    data = await svc.getByNombre("Perry");
+    console.log(data);
+    
+}
+
 
 process.exit();
