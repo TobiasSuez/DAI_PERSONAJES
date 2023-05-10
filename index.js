@@ -1,7 +1,8 @@
 import PersonajesServices from './Services/Personajes-services.js'
 import Pelicula from './modulos/Pelicula.js'
 import Personajes from './modulos/Personajes.js'
-
+var express = require('express');	// Import express
+var app = express();	// Create an express app
 
 //await test_getAll();
 //await test_getById();
@@ -10,7 +11,7 @@ import Personajes from './modulos/Personajes.js'
 //await test_deleteById();
 //await Test_Detalles();
 //await Buscar_x_Peso();
-await Buscar_x_Nombre();
+//await Buscar_x_Nombre();
 async function test_getAll() {
     let svc = new PersonajesServices();
     let data;
@@ -103,5 +104,7 @@ async function Buscar_x_Nombre(){
     
 }
 
-
+app.listen(3000, function() {
+    console.log('Example app listening on port 3000!');
+})
 process.exit();
