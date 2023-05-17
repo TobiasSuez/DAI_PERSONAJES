@@ -338,13 +338,12 @@ app.get('/xNombre', function(req, res) {
     async function Buscar_x_Nombre(){
         let svc= new PersonajesServices();
         let data;
-        data = await svc.getByNombre("Perry");
+        data = await svc.getByNombre("Shrek");
         console.log(data);
         res.send(data)
     }
     Buscar_x_Nombre()
 })
-
 
 app.get('/detallePelis', function(req, res) {
     async function Test_DetallesPelis(){
@@ -377,14 +376,15 @@ app.get('/insertPeli', function(req, res) {
     test_insertPELIS()
 })
 
-app.get('/updatePelis ', function(req, res) {
+app.get('/PelisAC ', function(req, res) {
+    console.log("j");
     async function test_updatePELIS() {
         let svc = new PeliculaServices();
         let data;
         let LaPeli;
-    
+
         LaPeli = await svc.getById(4);
-        if (LaPeli != null) {
+               if (LaPeli != null) {
             
             LaPeli.idPelicula=4
             LaPeli.Titulo="A"
@@ -409,35 +409,34 @@ app.get('/deletePelis', function(req, res) {
     async function test_deleteByIdPELIS() {
         let svc = new PeliculaServices();
         let data;
-    
         data = await svc.deleteById(1);
         res.send(data)
     }
     test_deleteByIdPELIS()
 })
 
-app.get('/movies?name=nombre', function(req, res) {
+app.get('/moviesName', function(req, res) {
     async function Buscar_x_Titulo(){
         let svc= new PeliculaServices();
         let data;
         data = await svc.getByNombre("ToyStory");
         console.log(data);
+        res.send(data)
         
     }
     Buscar_x_Titulo()
-    res.send(data)
 
 })
-app.get('/movies?order=ASC', function(req, res) {
+app.get('/moviesorder', function(req, res) {
     async function getAllASCDESC(){
         let svc= new PeliculaServices();
         let data;
-        data = await svc.getAllASCDESC("DESC");
+        data = await svc.getAllASCDESC("ASC");
         console.log(data);
+        res.send(data)
 
     }
     getAllASCDESC()
-    res.send(data)
 
 })
 

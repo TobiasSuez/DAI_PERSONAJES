@@ -101,7 +101,7 @@ class PeliculaServices {
     }
     getByNombre = async (Titulo) => {
         let returnEntity = null;
-        console.log('Estoy en: PersonajesService.getByPeso(id)');
+        console.log('Estoy en: PersonajesService.getByNombre(id)');
         try {
             let pool = await sql.connect(config);
             let result = await pool.request()
@@ -115,8 +115,8 @@ class PeliculaServices {
     }
 
     getAllASCDESC = async (ASC) => {
-        let returnEntity = null;
-        console.log('Estoy en: PersonajesService.getByPeso(id)');
+        let returnArray = null;
+        console.log('Estoy en: PersonajesService.Orden(id)');
         try {
             if(ASC=="ASC"){
 
@@ -124,19 +124,19 @@ class PeliculaServices {
                 let result = await pool.request()
                     .input('pASC', sql.VarChar, ASC ?? "ASC")
                     .query('SELECT * FROM Pelicula ORDER BY Titulo ASC');
-                returnEntity = result.recordsets[0][0];
+                    returnArray = result.recordsets[0];
             }
             else{
                 let pool = await sql.connect(config);
                 let result = await pool.request()
                     .input('pASC', sql.VarChar, ASC ?? "ASC")
                     .query('SELECT * FROM Pelicula ORDER BY Titulo DESC');
-                returnEntity = result.recordsets[0][0];
+                    returnArray = result.recordsets[0];
             }
         } catch (error) {
             console.log(error);
         }
-        return returnEntity;
+        return returnArray;
     }
 
 }
